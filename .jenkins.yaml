@@ -1,0 +1,14 @@
+---
+environment_variables:
+  LOOKUP_VERSION: "0.3.2"
+git:
+  branch: master
+triggers:
+  cron: "@daily"
+clean_workspace: true
+builders:
+  - docker
+docker_name: drive/nextcloud-lookup
+docker_tags:
+  - "${LOOKUP_VERSION}"
+docker_no_cache: true
