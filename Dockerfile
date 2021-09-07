@@ -1,5 +1,6 @@
 FROM php:7.4-apache-buster
 
+
 RUN set -ex; \
     \
     mkdir -p /var/spool/cron/crontabs; \
@@ -7,7 +8,11 @@ RUN set -ex; \
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-RUN a2enmod rewrite
+RUN apt update && apt install ssl-cert
+RUN a2enmod rewrite ssl 
+
+COPY --chown=root:root ./000-default.conf /etc/apache2/sites-available/
+RUN usermod -a -G tty www-data
 
 RUN mkdir /var/www/html/data; \
     chown -R www-data:root /var/www; \
