@@ -24,8 +24,3 @@ ADD --chown=www-data:root https://github.com/nextcloud/lookup-server/archive/v${
 
 RUN tar -xzf v${LOOKUP_VERSION}.tar.gz lookup-server-${LOOKUP_VERSION}/server --strip-components=2; \
     rm v${LOOKUP_VERSION}.tar.gz
-
-COPY --chown=www-data:root config.php ./config/config.php
-
-CMD ["apache2-foreground"]
-
