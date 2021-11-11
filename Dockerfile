@@ -18,7 +18,7 @@ RUN mkdir /var/www/html/data; \
     chown -R www-data:root /var/www; \
     chmod -R g=u /var/www
 
-ENV LOOKUP_VERSION 0.3.2-sunet1
+ENV LOOKUP_VERSION 0.3.2-sunet2
 
 ADD --chown=www-data:root  https://github.com/SUNET/lookup-server/archive/v${LOOKUP_VERSION}.tar.gz .
 
