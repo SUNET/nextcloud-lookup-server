@@ -1,6 +1,6 @@
 ---
 environment_variables:
-  LOOKUP_VERSION: "0.3.2-sunet3"
+  LOOKUP_VERSION: "1.1.0-sunet1"
 git:
   branch: master
 triggers:

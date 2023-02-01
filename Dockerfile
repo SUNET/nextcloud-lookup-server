@@ -1,4 +1,4 @@
-FROM php:7.4-apache-buster
+FROM php:7.4-apache-bullseye
 
 
 RUN set -ex; \
@@ -12,13 +12,14 @@ RUN apt update && apt install ssl-cert
 RUN a2enmod rewrite ssl 
 
 COPY --chown=root:root ./000-default.conf /etc/apache2/sites-available/
+COPY --chown=root:root ./mysql.dmp /
 RUN usermod -a -G tty www-data
 
 RUN mkdir /var/www/html/data; \
     chown -R www-data:root /var/www; \
     chmod -R g=u /var/www
 
-ENV LOOKUP_VERSION 0.3.2-sunet3
+ENV LOOKUP_VERSION 1.1.0-sunet1
 
 ADD --chown=www-data:root  https://github.com/SUNET/lookup-server/archive/v${LOOKUP_VERSION}.tar.gz .
 
