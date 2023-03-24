@@ -1,6 +1,6 @@
 ---
 environment_variables:
-  LOOKUP_VERSION: "1.1.0-sunet1"
+  LOOKUP_VERSION: "1.1.0-1"
 git:
   branch: master
 triggers:
@@ -11,4 +11,5 @@ builders:
 docker_name: drive/nextcloud-lookup
 docker_tags:
   - "${LOOKUP_VERSION}"
+  - latest
 docker_no_cache: true
