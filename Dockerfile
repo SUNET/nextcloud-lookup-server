@@ -19,9 +19,6 @@ RUN mkdir /var/www/html/data; \
     chown -R www-data:root /var/www; \
     chmod -R g=u /var/www
 
-ENV LOOKUP_VERSION 1.1.0
+COPY ./lookup-server-1.1.0.tar.gz /tmp
+RUN cd /tmp && tar xfv lookup-server-1.1.0.tar.gz && mv lookup-server/server/* /var/www/html/ 
 
-ADD --chown=www-data:root https://github.com/nextcloud/lookup-server/archive/refs/tags/v${LOOKUP_VERSION}.tar.gz .
-
-RUN tar -xzf v${LOOKUP_VERSION}.tar.gz lookup-server-${LOOKUP_VERSION}/server --strip-components=2; \
-    rm v${LOOKUP_VERSION}.tar.gz
