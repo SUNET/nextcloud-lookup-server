@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 # Should be no need to modify beyond this point, unless you need to patch something or add more apps
 ARG DEBIAN_FRONTEND=noninteractive
@@ -43,7 +43,7 @@ RUN set -ex; \
 
 
 RUN apt update && apt install ssl-cert
-RUN a2enmod rewrite ssl 
+RUN a2enmod rewrite ssl
 
 COPY --chown=root:root ./000-default.conf /etc/apache2/sites-available/
 COPY --chown=root:root ./mysql.dmp /
@@ -53,6 +53,6 @@ RUN mkdir /var/www/html/data; \
     chown -R www-data:root /var/www; \
     chmod -R g=u /var/www
 
-COPY ./lookup-server-1.1.0.tar.gz /tmp
-RUN cd /tmp && tar xfv lookup-server-1.1.0.tar.gz && mv lookup-server/server/* /var/www/html 
+COPY ./lookup-server-1.1.2.tar.gz /tmp
+RUN cd /tmp && tar xfv lookup-server-1.1.2.tar.gz && mv lookup-server/server/* /var/www/html
 
