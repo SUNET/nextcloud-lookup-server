@@ -1,6 +1,6 @@
 ---
 environment_variables:
-  LOOKUP_VERSION: "1.1.2-1"
+  LOOKUP_VERSION: "1.1.2-2"
 git:
   branch: master
 triggers:
